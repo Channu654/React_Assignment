@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import DataTables from './DataTables';
 
-
 const Table = () => {
   const [data, setData] = useState([]);
   const productData = () => {
@@ -14,33 +13,14 @@ const Table = () => {
       .catch((err) => console.log(err));
   };
 
-
-const colunms = [
-  {
-    name: 'Symbol',
-    selector: (row) => row.symbol,
-  },
-  {
-    name: 'Description',
-    selector: (row) => row.description,
-  },
-  {
-    name: 'Underlying Asset',
-    selector: (row) => row.underlying_asset,
-  },
-];
-
-
-
   useEffect(() => {
     productData();
   }, []);
 
-  
-//   console.log(data.result);
+  //   console.log(data.result);
   return (
     <div>
-       <DataTables colunms = {colunms} data = {data}/>
+      <DataTables data={data} />
     </div>
   );
 };
