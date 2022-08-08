@@ -6,9 +6,12 @@ import DataTables from './DataTables';
 
 const Table = () => {
   const [data, setData] = useState([]);
+  const [Page ,setPage] =useState([])
+  
+
   const productData = () => {
     return axios
-      .get('https://api.delta.exchange/v2/products')
+      .get(`https://api.delta.exchange/v2/products/${Page}`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   };
@@ -16,7 +19,11 @@ const Table = () => {
   useEffect(() => {
     productData();
   }, []);
-
+//pagination 
+  // const indexOflastPage = currentPage * postPerpage
+  // const indexOffirstPage = indexOflastPage-postPerpage
+  // const currentPost = data.slice(indexOffirstPage , indexOflastPage)
+  
   //   console.log(data.result);
   return (
     <div>
